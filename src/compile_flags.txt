@@ -1,0 +1,2 @@
+-I
+build/_deps/sdl3-src/include/SDL3

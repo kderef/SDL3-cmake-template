@@ -1,0 +1,42 @@
+cmake_minimum_required(VERSION 3.10)
+project(your_project)
+set(CMAKE_COLOR_DIAGNOSTICS OFF)
+
+# --- Source files
+include_directories(${CMAKE_CURRENT_LIST_DIR}/src)
+set(SOURCES
+    src/main.c  # Ensure the correct relative path to your source files
+)
+
+include(FetchContent)
+
+# --- SDL3 fetching
+set(SDL_STATIC TRUE)
+set(SDL_SHARED FALSE)
+FetchContent_Declare(
+    SDL3
+    GIT_REPOSITORY "https://github.com/libsdl-org/SDL.git"
+    GIT_TAG        release-3.2.6
+)
+
+FetchContent_MakeAvailable(SDL3)
+
+# --- Final executable
+if (CMAKE_BUILD_TYPE STREQUAL "Release")
+    if (WIN32)
+        add_executable(${PROJECT_NAME} WIN32 ${SOURCES})
+    endif()
+else()
+    add_executable(${PROJECT_NAME} ${SOURCES})
+endif()
+
+ 
+if (CMAKE_BUILD_TYPE STREQUAL "Release")
+    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS_RELEASE -s)
+endif()
+
+# Link SDL3 library statically
+target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3-static)
+
+# Ensure runtime DLLs are not needed for static linking
+set_property(TARGET ${PROJECT_NAME} PROPERTY ENABLE_EXPORTS OFF)
