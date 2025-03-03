@@ -3,7 +3,9 @@ simple template for SDL3 in C
 
 ### HOW TO USE
 first, clone this repository:  
-`git clone https://github.com/kderef/SDL3-cmake-template`  
+```
+git clone https://github.com/kderef/SDL3-cmake-template
+```  
 then, create and enter the build directory:  
 ```
 mkdir build
