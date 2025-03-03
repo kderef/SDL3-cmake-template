@@ -12,6 +12,8 @@ mkdir build
 cd build
 ```
 then, run `cmake` to generate the build files.
-`cmake ..`
+```
+cmake ..
+```
 *optionally, you can also add `-D CMAKE_BUILD_TYPE=Release` to enable optimizations and disable the console on windows.  
 finally, run `make` or open the solution if you are on windows!
