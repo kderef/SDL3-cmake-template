@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(SchlumbusWorld)
+project(your_project)
 
 # --- Some variables
 set(CMAKE_COLOR_DIAGNOSTICS OFF)
