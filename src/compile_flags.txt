@@ -1,2 +1,2 @@
 -I
-build/_deps/sdl3-src/include/SDL3
+build/_deps/sdl3-src/include
